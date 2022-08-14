@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>JHLandlord/BKCard.qml</file>
+        <file>JHLandlord/Card.qml</file>
+        <file>JHLandlord/CardManager.qml</file>
+        <file>JHLandlord/LandlordUI.qml</file>
+        <file>JHLandlord/main.qml</file>
+        <file>JHLandlord/Player.qml</file>
+        <file>JHQmlControl/AffirmBottom.qml</file>
+    </qresource>
+</RCC>
