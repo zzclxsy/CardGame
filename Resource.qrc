@@ -1,5 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>image/poker.png</file>
+        <file>image/start_immediately.png</file>
+        <file>image/btn_cancel.png</file>
+        <file>image/btn_commit.png</file>
+        <file>font/FZZY.TTF</file>
     </qresource>
 </RCC>

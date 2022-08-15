@@ -6,6 +6,6 @@
         <file>JHLandlord/LandlordUI.qml</file>
         <file>JHLandlord/main.qml</file>
         <file>JHLandlord/Player.qml</file>
-        <file>JHQmlControl/AffirmBottom.qml</file>
+        <file>JHQmlControl/JHBottom.qml</file>
     </qresource>
 </RCC>
