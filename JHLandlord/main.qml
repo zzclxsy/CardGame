@@ -5,12 +5,13 @@ import JHFramework 1.0
 
 Window {
     id: window
-    width: 1500
-    height: 1000
+    width: 1200
+    height: 800
     visible: true
     title: qsTr("Hello World")
 
     LandlordUI{
         anchors.fill: parent
     }
+
 }

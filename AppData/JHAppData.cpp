@@ -38,12 +38,6 @@ void JHAppData::SendDomainData(QString domain, QString data)
     }
 }
 
-void JHAppData::RegisterToQml(QQmlEngine *)
-{
-    qmlRegisterUncreatableType<JHAppData>("JHFramework",1,0,"JHAppData","JHAppData Register Fail");
-    qmlRegisterType<JHMessageClient>("JHFramework",1,0,"JHMessageClient");
-}
-
 void JHAppData::SetCardDomain(const QString &newCardDomain)
 {
     if (m_cardDomain == newCardDomain)

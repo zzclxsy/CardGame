@@ -14,13 +14,12 @@ class JHCardManager:
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE void shuffleCards();
+    Q_INVOKABLE void shuffleCards(QString ruleType);
 
 public:
     explicit JHCardManager();
-
+    JHCardImage * GetImageManager();
     void Initialize() override;
-    void RegisterToQml(QQmlEngine *engine)override;
     JHCard *GetCard(int index);
 
 private:

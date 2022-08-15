@@ -7,8 +7,6 @@ class JHLandlordsRule : public JHCardRule,public JHModule
 {
 public:
     JHLandlordsRule();
-    void ShuffleCardRule(QList<int> &result) override;
-    int DispatchCardRule() override;
 };
 
 #endif // JHLANDLORDSRULE_H

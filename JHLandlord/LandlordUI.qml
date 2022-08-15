@@ -42,7 +42,7 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    JHCardManager.shuffleCards();
+                    app.JHCardManager.shuffleCards("JHLandlordsRule")
                     cardManager.bkCardShow(item0.width/2,item0.height/2)
                     time.start()
                 }

@@ -12,7 +12,6 @@ class JHAppData : public JHModule
     Q_PROPERTY(QString CardDomain READ GetCardDomain WRITE SetCardDomain NOTIFY cardDomainChanged)
 public:
     JHAppData();
-    void RegisterToQml(QQmlEngine *);
     void CreateDomain(QString domain);
     void AddClient(JHMessageClient *client, QString domain);
     void SendDomainData(QString domain,QString data);

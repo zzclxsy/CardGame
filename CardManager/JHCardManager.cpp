@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include "../CardRule/JHCardRule.h"
+#include "../AppData/JHAppData.h"
 #include <QJsonDocument>
 #include "JHFramework.h"
 #include "Player/JHPlayer.h"
@@ -16,10 +17,9 @@ JHCardManager::JHCardManager()
     mp_imageManager = new JHCardImage;
 }
 
-void JHCardManager::RegisterToQml(QQmlEngine *engine)
+JHCardImage *JHCardManager::GetImageManager()
 {
-    engine->addImageProvider(QLatin1String("JHCardImage"), mp_imageManager);
-    engine->rootContext()->setContextProperty("JHCardManager", this);
+    return mp_imageManager;
 }
 
 JHCard *JHCardManager::GetCard(int index)
@@ -70,18 +70,17 @@ void JHCardManager::Initialize()
 
 
 
-void JHCardManager::shuffleCards()
+void JHCardManager::shuffleCards(QString ruleType)
 {
     qDebug()<<"JHCardManager::shuffleCard";
     QJsonObject root;
     QJsonArray array;
 
-
     QList<int> result = m_cards.keys();
-    mp_cardRule = GetFramework()->GetModule<JHLandlordsRule>("JHLandlordsRule");
+    mp_cardRule = GetFramework()->GetModule<JHCardRule>(ruleType);
     mp_cardRule->ShuffleCardRule(result);
     for (int i : qAsConst(result)){
-         array.append(i);
+        array.append(i);
     }
     root["shuffleCard"] = array;
     QJsonDocument document(root);

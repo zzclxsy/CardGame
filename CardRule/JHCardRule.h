@@ -6,9 +6,8 @@ class JHCardRule
 public:
     JHCardRule();
     virtual ~JHCardRule();
-
-    virtual void ShuffleCardRule(QList<int> &cards) = 0;
-    virtual int DispatchCardRule() = 0;
+    //默认随机洗牌
+    virtual void ShuffleCardRule(QList<int> &cards);
 };
 
 #endif // JHCARDRULE_H
