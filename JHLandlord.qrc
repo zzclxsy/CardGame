@@ -7,5 +7,6 @@
         <file>JHLandlord/main.qml</file>
         <file>JHLandlord/Player.qml</file>
         <file>JHQmlControl/JHBottom.qml</file>
+        <file>JHLandlord/ShareData.js</file>
     </qresource>
 </RCC>

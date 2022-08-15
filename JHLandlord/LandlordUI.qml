@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQml 2.12
 import JHFramework 1.0
 import "../JHQmlControl"
+import "./ShareData.js" as ShareData
 Item {
 
     id:item0
@@ -41,12 +42,24 @@ Item {
             imageSorce: "qrc:/image/start_immediately.png"
             onBottomClicked: {
                 this.visible = false
+                bkRect.visible = true
                 app.JHCardManager.shuffleCards("JHLandlordsRule")
-                cardManager.bkCardShow(item0.width/2,item0.height/2)
+                cardManager.bkCardShow(bkRect)
                 time.start()
             }
         }
 
+        Rectangle {
+            id: bkRect
+            x: 233
+            y: 140
+            width: ShareData.cardWidth
+            height: ShareData.cardHeight
+            color: "red"
+            visible: false
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
         Player {
             id: player
             drectoon:"下"
@@ -84,27 +97,28 @@ Item {
             anchors.topMargin: 0
             anchors.leftMargin: 0
         }
+
     }
 
     Timer{
         id:time
-        interval: 60
+        interval: 80
         repeat: true
         onTriggered: {
             if ( dealCardindex%3 === 0)//下
             {
-                cardManager.move(item0.width/2,item0.height - cardManager.bkCard0.height)
+                cardManager.move(0, item0.height/2 - 20)
                 player.setCard(cardManager.cards[shuffleCard[dealCardindex]])
             }
 
             else if ( dealCardindex%3 === 1)//右
             {
-                cardManager.move(item0.width - cardManager.bkCard0.width, item0.height/2)
+                cardManager.move(item0.width/2 -20, 0)
                 player1.setCard(cardManager.cards[shuffleCard[dealCardindex]])
             }
             else if ( dealCardindex%3 === 2)//左
             {
-                cardManager.move(cardManager.bkCard0.width,item0.height/2)
+                cardManager.move(-item0.width/2 +ShareData.cardWidth +20, 0)
                 player2.setCard(cardManager.cards[shuffleCard[dealCardindex]])
             }
             dealCardindex = dealCardindex + 1

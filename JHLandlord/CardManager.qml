@@ -1,30 +1,35 @@
 import QtQuick 2.0
 import QtQml 2.12
+import "./ShareData.js" as ShareData
 Item {
     property var bkCard0
     property var bkCard1
     property var cards:[]
-
-    property int cardWidth: 90
-    property int cardheight: 130
     property int restX
     property int restY
+    property int cardWidth: ShareData.cardWidth
+    property int cardheight: ShareData.cardHeight
     signal cardClicked(var sender)
-    function bkCardShow(x,y)
+    function bkCardShow(parent)
     {
-        bkCard0.beginItemX = x
-        bkCard0.beginItemY = y
-        bkCard1.beginItemX = x
-        bkCard1.beginItemY = y
+        bkCard0.parent = bkRect
+        bkCard0.visible = true
 
-        bkCard0.bkCardShow()
-        bkCard1.bkCardShow()
+        bkCard1.parent = bkRect
+        bkCard1.visible = true
     }
 
     function move(x,y)
     {
-        bkCard1.moveItemX = x - cardWidth/2
-        bkCard1.moveItemY = y - cardheight/2
+        if (x !== 0)
+            bkCard1.moveItemX = x - cardWidth/2
+        else
+            bkCard1.moveItemX = 0
+        if (y !== 0)
+            bkCard1.moveItemY = y - cardheight/2
+        else
+            bkCard1.moveItemY = 0
+
         bkCard1.animationStart()
     }
 
@@ -59,12 +64,12 @@ Item {
                 else
                     sort= sortindex0 + sortindex1
 
-                var object = component.createObject(parent,{"width":cardWidth,"height":cardheight,"imageSource":str,"index":i,"sortIndex":sort})
+                var object = component.createObject(parent,{"width":ShareData.cardWidth,"height":ShareData.cardHeight,"imageSource":str,"index":i,"sortIndex":sort})
                 sortindex1 = sortindex1 + 4
                 if (i === 54)
                 {
                     bkCard0 = object
-                    var object1 = component.createObject(parent,{"width":cardWidth,"height":cardheight,"imageSource":str})
+                    var object1 = component.createObject(parent,{"width":ShareData.cardWidth,"height":ShareData.cardHeight,"imageSource":str})
                     bkCard1 = object1
                 }
                 else{
